@@ -1,7 +1,10 @@
 package com.coderszone.service;
 
+import org.springframework.stereotype.Service;
+
 import com.coderszone.model.User;
 
+@Service
 public interface  UserService {
 	
 	//User update(User user);

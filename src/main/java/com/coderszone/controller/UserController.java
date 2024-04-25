@@ -12,17 +12,21 @@ import com.coderszone.request.body.UserRegisterLoginRequest;
 import com.coderszone.response.body.UserLoginResponse;
 import com.coderszone.response.body.UserRegisterLoginResponse;
 import com.coderszone.service.UserService;
+import com.coderszone.validator.UserLoginRegisterValidator;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
+	
+	@Autowired
+	UserLoginRegisterValidator validator;
+	
 	@Autowired
 	UserService userService;
-
+	
 	@PostMapping("/customer/signup")
 	public UserRegisterLoginResponse reisterUser(@RequestBody UserRegisterLoginRequest userRegisterRequest) {
-		
+		validator.validateRegisterUser();
 		return null;
 	}
 
