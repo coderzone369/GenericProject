@@ -20,23 +20,23 @@ public class LocalCacheManager {
 
 	private RegexService regexService;
 
-	@EventListener
-	public void init(ContextRefreshedEvent event) throws Exception {
-		System.out.println("This is init method");
-		List<Regex> regexList = regexService.getAllRegex();
-		if (ValidationUtil.isValidCollection(regexList)) {
-			for (Regex regex : regexList) {
-				if (!regexDTOMap.containsKey(regex.getRegexName())) {
-					regexDTOMap.put(regex.getRegexName(), new RegexDTO(regex.getRegexValue(), regex.getRegexMessage()));
-				} else {
-					throw new Exception("Duplicate key name exists");
-				}
-			}
-		} else {
-			throw new Exception("Invalid Data");
-		}
-
-	}
+//	@EventListener
+//	public void init(ContextRefreshedEvent event) throws Exception {
+//		System.out.println("This is init method");
+//		List<Regex> regexList = regexService.getAllRegex();
+//		if (ValidationUtil.isValidCollection(regexList)) {
+//			for (Regex regex : regexList) {
+//				if (!regexDTOMap.containsKey(regex.getRegexName())) {
+//					regexDTOMap.put(regex.getRegexName(), new RegexDTO(regex.getRegexValue(), regex.getRegexMessage()));
+//				} else {
+//					throw new Exception("Duplicate key name exists");
+//				}
+//			}
+//		} else {
+//			throw new Exception("Invalid Data");
+//		}
+//
+//	}
 	
 	public RegexDTO getRegexDTOByName(String key) {
 		RegexDTO regexDTO = regexDTOMap.get(key);
